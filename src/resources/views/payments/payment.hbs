@@ -1,0 +1,123 @@
+<div class="mt-4">
+    <a href="/manage" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+        </svg> Trở về trang chủ
+    </a>
+
+    <div class="mt-4 text-center">
+        <h1 class="mb-4">Quản lí thanh toán</h1>
+        <a href="" id="btn-In" class="btn btn-success">In</a>
+        <div class="d-flex justify-content-center mt-4">
+            <div class="me-2">
+                <label for="month" class="form-label">Tháng</label>
+                <select class="form-select" id="cbMonth">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+            </div>
+            <div class="ms-2">
+                <label for="year" class="form-label">Năm</label>
+                <select class="form-select" id="cbYear">
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    {{#if Payment.length}}
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Tên Phòng</th>
+                <th scope="col">Điện(Tiêu thụ)</th>
+                <th scope="col">Tiền(Điện)</th>
+                <th scope="col">Nước(Tiêu thụ)</th>
+                <th scope="col">Tiền(Nước)</th>
+                <th scope="col">Tiền(Tổng)</th>
+                <th scope="col">Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each Payment}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.eConsumption}}</td>
+                <td>{{this.eTotal}}</td>
+                <td>{{this.wConsumption}}</td>
+                <td>{{this.wTotal}}</td>
+                <td>{{this.totalPay}}</td>
+                <td>{{this.status}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <div class="mt-4 text-center">
+        <h3>Danh sách hiện đang trống!!!</h3>
+    </div>
+    {{/if}}
+
+</div>
+
+<script>
+    const cbMonth = document.getElementById('cbMonth');
+    const cbYear = document.getElementById('cbYear');
+    const btnIn = document.getElementById('btn-In');
+
+    var month = getCookie('monthLast');
+    var year = getCookie('yearLast');
+
+    if (month != undefined && year != undefined) {
+        cbMonth.value = getCookie('monthLast');
+        cbYear.value = getCookie('yearLast');
+        btnIn.href = "/payment/print?month=" + cbMonth.value + "&year=" + cbYear.value;
+    }
+    else {
+        cbMonth.value = 1;
+        cbYear.value = 2023;
+        btnIn.href = "/payment/print?month=" + cbMonth.value + "&year=" + cbYear.value;
+    }
+
+    cbMonth.onchange = showData;
+    cbYear.onchange = showData;
+
+    function showData() {
+        window.location.href = "/payment?month=" + cbMonth.value + "&year=" + cbYear.value;
+    }
+
+    // Hàm lấy giá trị cookie
+    function getCookie(name) {
+        const cookieName = name + "=";
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(cookieName) === 0) {
+                return cookie.substring(cookieName.length, cookie.length);
+            }
+        }
+        return "";
+    }
+    function setCookie(name, value, days = 365) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+</script>

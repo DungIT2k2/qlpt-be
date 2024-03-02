@@ -1,0 +1,18 @@
+<div class="mt-4">
+    <h3>Sửa thông tin phòng</h3>
+    <form action="/room/{{Room._id}}?_method=PUT" method="POST">
+        <div class="mb-3">
+            <label for="name">Tên phòng</label>
+            <input type="text" class="form-control" value="{{Room.name}}" id="name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="owner">Người thuê</label>
+            <input type="text" class="form-control" value="{{Room.owner}}" id="owner" name="owner">
+        </div>
+        <div class="mb-3">
+            <label for="status">Tình trạng</label>
+            <input type="checkbox" value="true" id="status" name="status" {{Room.status}}>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Sửa Phòng</button>
+    </form>
+</div>

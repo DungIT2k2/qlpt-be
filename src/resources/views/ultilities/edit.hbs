@@ -1,0 +1,48 @@
+<div class="mt-4">
+    <a href="/ultility" id="btn-Back" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+        </svg> Trở về QL tiện ích</a>
+    <h3 class="text-center">Thêm điện nước tháng mới</h3>
+    <form action="/ultility/update?_method=PUT" method="POST">
+        <div class="d-flex justify-content-center mt-4">
+            <div class="me-2">
+                <label for="month" class="form-label" id="lbThang">Tháng {{month}}</label>
+            </div>
+            <div class="ms-2">
+                <label for="year" class="form-label" id="lbNam">Năm {{year}}</label>
+                
+            </div>
+        </div>
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Tên Phòng</th>
+                    <th scope="col">Điện</th>
+                    <th scope="col">Nước</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each Ultility}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td><input type="text" class="form-control" id="{{this._id}}" name="electricity" value="{{this.electricity}}"></td>
+                    <td><input type="text" class="form-control" id="{{this._id}}" name="water" value="{{this.water}}"></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Lưu</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const lbThang = document.getElementById('lbThang');
+    const lbNam = document.getElementById('lbNam');
+    
+    {{!-- lbThang.value = getCookie('months');
+    lbNam.value = getCookie('years'); --}}
+</script>

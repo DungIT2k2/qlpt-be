@@ -1,0 +1,55 @@
+<style>
+  .centered-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .form-container {
+    max-width: 400px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-container .form-label {
+    font-weight: bold;
+  }
+
+  .form-container .form-control {
+    border-radius: 5px;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  .form-container .form-control:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  .form-container .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+  }
+</style>
+
+<div class="centered-form">
+  <div class="form-container">
+    <form action="/login" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+      <label for="notification" class="form-label" style="color: red;">{{noti}}</label>
+    </form>
+  </div>
+</div>
