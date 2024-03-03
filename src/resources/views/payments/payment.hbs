@@ -10,6 +10,8 @@
     <div class="mt-4 text-center">
         <h1 class="mb-4">Quản lí thanh toán</h1>
         <a href="" id="btn-In" class="btn btn-success">In</a>
+        <a href="" id="btn-Create" class="btn btn-primary">Tạo bản tính</a>
+
         <div class="d-flex justify-content-center mt-4">
             <div class="me-2">
                 <label for="month" class="form-label">Tháng</label>
@@ -49,6 +51,7 @@
                 <th scope="col">Tiền(Nước)</th>
                 <th scope="col">Tiền(Tổng)</th>
                 <th scope="col">Trạng thái</th>
+                <th scope="col">Thao tác</th>
             </tr>
         </thead>
         <tbody>
@@ -60,7 +63,10 @@
                 <td>{{this.wConsumption}}</td>
                 <td>{{this.wTotal}}</td>
                 <td>{{this.totalPay}}</td>
-                <td>{{this.status}}</td>
+                <td><input type="checkbox" value="true" id="status" name="status" {{this.status}} disabled></td>
+                <td>
+                    <a href="#" id="btn-Pay" class="btn btn-success" data-payment-id="{{this._id}}">Thanh toán</a>
+                </td>
             </tr>
             {{/each}}
         </tbody>
@@ -77,6 +83,24 @@
     const cbMonth = document.getElementById('cbMonth');
     const cbYear = document.getElementById('cbYear');
     const btnIn = document.getElementById('btn-In');
+    const btnCreate = document.getElementById('btn-Create');
+
+    var paymentButtons = document.querySelectorAll('#btn-Pay');
+
+    paymentButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của trình duyệt
+
+            var paymentId = this.getAttribute('data-payment-id');
+            var form = document.createElement('form');
+            form.action = '/payment/pay?id=' + paymentId +'&_method=PUT';
+            form.method = 'POST';
+
+            document.body.appendChild(form);
+            form.submit();
+        });
+    });
+
 
     var month = getCookie('monthLast');
     var year = getCookie('yearLast');
@@ -85,11 +109,14 @@
         cbMonth.value = getCookie('monthLast');
         cbYear.value = getCookie('yearLast');
         btnIn.href = "/payment/print?month=" + cbMonth.value + "&year=" + cbYear.value;
+        btnCreate.href = "/payment/create?month=" + cbMonth.value + "&year=" + cbYear.value;
     }
     else {
         cbMonth.value = 1;
         cbYear.value = 2023;
         btnIn.href = "/payment/print?month=" + cbMonth.value + "&year=" + cbYear.value;
+        btnCreate.href = "/payment/create?month=" + cbMonth.value + "&year=" + cbYear.value;
+
     }
 
     cbMonth.onchange = showData;

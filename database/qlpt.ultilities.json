@@ -1,0 +1,780 @@
+[{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b1f"
+  },
+  "name": "Phòng 1",
+  "month": "12",
+  "year": "2023",
+  "electricity": "4032",
+  "water": "354"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b20"
+  },
+  "name": "Phòng 2",
+  "month": "12",
+  "year": "2023",
+  "electricity": "8708",
+  "water": "318"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b21"
+  },
+  "name": "Phòng 3",
+  "month": "12",
+  "year": "2023",
+  "electricity": "1430",
+  "water": "494"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b24"
+  },
+  "name": "Phòng 6",
+  "month": "12",
+  "year": "2023",
+  "electricity": "11924",
+  "water": "834"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b25"
+  },
+  "name": "Phòng 7",
+  "month": "12",
+  "year": "2023",
+  "electricity": "7365",
+  "water": "310"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b26"
+  },
+  "name": "Phòng 8",
+  "month": "12",
+  "year": "2023",
+  "electricity": "34054",
+  "water": "3022"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b27"
+  },
+  "name": "Phòng 9",
+  "month": "12",
+  "year": "2023",
+  "electricity": "3812",
+  "water": "552"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b28"
+  },
+  "name": "Phòng 10",
+  "month": "12",
+  "year": "2023",
+  "electricity": "3541",
+  "water": "192"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b29"
+  },
+  "name": "Phòng 11",
+  "month": "12",
+  "year": "2023",
+  "electricity": "4705",
+  "water": "401"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b2a"
+  },
+  "name": "Phòng 12",
+  "month": "12",
+  "year": "2023",
+  "electricity": "6207",
+  "water": "420"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b2b"
+  },
+  "name": "Phòng 13",
+  "month": "12",
+  "year": "2023",
+  "electricity": "9293",
+  "water": "470"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b2c"
+  },
+  "name": "Phòng 14",
+  "month": "12",
+  "year": "2023",
+  "electricity": "2621",
+  "water": "452"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b2d"
+  },
+  "name": "Phòng 15",
+  "month": "12",
+  "year": "2023",
+  "electricity": "2496",
+  "water": "255"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b2e"
+  },
+  "name": "Phòng 16",
+  "month": "12",
+  "year": "2023",
+  "electricity": "5168",
+  "water": "570"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b2f"
+  },
+  "name": "Phòng 17",
+  "month": "12",
+  "year": "2023",
+  "electricity": "4849",
+  "water": "396"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b30"
+  },
+  "name": "Phòng 18",
+  "month": "12",
+  "year": "2023",
+  "electricity": "4610",
+  "water": "73"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b31"
+  },
+  "name": "Phòng 19",
+  "month": "12",
+  "year": "2023",
+  "electricity": "131",
+  "water": "112"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b32"
+  },
+  "name": "Phòng 20",
+  "month": "12",
+  "year": "2023",
+  "electricity": "1705",
+  "water": "279"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b33"
+  },
+  "name": "Phòng 1 (Trái)",
+  "month": "12",
+  "year": "2023",
+  "electricity": "3959",
+  "water": "325"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b34"
+  },
+  "name": "Phòng 2 (Trái)",
+  "month": "12",
+  "year": "2023",
+  "electricity": "5278",
+  "water": "437"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b35"
+  },
+  "name": "Phòng 3 (Trái)",
+  "month": "12",
+  "year": "2023",
+  "electricity": "3886",
+  "water": "246"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b36"
+  },
+  "name": "Phòng 4 (Trái)",
+  "month": "12",
+  "year": "2023",
+  "electricity": "5942",
+  "water": "724"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b37"
+  },
+  "name": "Phòng 5 (Trái)",
+  "month": "12",
+  "year": "2023",
+  "electricity": "328",
+  "water": "396"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b38"
+  },
+  "name": "Phòng 6 (Trái)",
+  "month": "12",
+  "year": "2023",
+  "electricity": "2953",
+  "water": "284"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b22"
+  },
+  "name": "Phòng 4",
+  "month": "12",
+  "year": "2023",
+  "electricity": "5796",
+  "water": "216"
+},
+{
+  "_id": {
+    "$oid": "65e3ef237d81b60b6eae2b23"
+  },
+  "name": "Phòng 5",
+  "month": "12",
+  "year": "2023",
+  "electricity": "2859",
+  "water": "467"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b59"
+  },
+  "name": "Phòng 1",
+  "month": "1",
+  "year": "2024",
+  "electricity": "4080",
+  "water": "357"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b5a"
+  },
+  "name": "Phòng 2",
+  "month": "1",
+  "year": "2024",
+  "electricity": "8712",
+  "water": "322"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b5b"
+  },
+  "name": "Phòng 3",
+  "month": "1",
+  "year": "2024",
+  "electricity": "1502",
+  "water": "499"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b5c"
+  },
+  "name": "Phòng 4",
+  "month": "1",
+  "year": "2024",
+  "electricity": "5999",
+  "water": "217"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b5d"
+  },
+  "name": "Phòng 5",
+  "month": "1",
+  "year": "2024",
+  "electricity": "2871",
+  "water": "469"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b60"
+  },
+  "name": "Phòng 8",
+  "month": "1",
+  "year": "2024",
+  "electricity": "34510",
+  "water": "3062"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b61"
+  },
+  "name": "Phòng 9",
+  "month": "1",
+  "year": "2024",
+  "electricity": "3845",
+  "water": "554"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b62"
+  },
+  "name": "Phòng 10",
+  "month": "1",
+  "year": "2024",
+  "electricity": "3657",
+  "water": "199"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b63"
+  },
+  "name": "Phòng 11",
+  "month": "1",
+  "year": "2024",
+  "electricity": "4761",
+  "water": "408"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b64"
+  },
+  "name": "Phòng 12",
+  "month": "1",
+  "year": "2024",
+  "electricity": "6373",
+  "water": "429"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b65"
+  },
+  "name": "Phòng 13",
+  "month": "1",
+  "year": "2024",
+  "electricity": "3421",
+  "water": "476"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b66"
+  },
+  "name": "Phòng 14",
+  "month": "1",
+  "year": "2024",
+  "electricity": "2677",
+  "water": "461"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b67"
+  },
+  "name": "Phòng 15",
+  "month": "1",
+  "year": "2024",
+  "electricity": "2514",
+  "water": "258"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b68"
+  },
+  "name": "Phòng 16",
+  "month": "1",
+  "year": "2024",
+  "electricity": "5305",
+  "water": "575"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b69"
+  },
+  "name": "Phòng 17",
+  "month": "1",
+  "year": "2024",
+  "electricity": "2893",
+  "water": "408"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b6a"
+  },
+  "name": "Phòng 18",
+  "month": "1",
+  "year": "2024",
+  "electricity": "4639",
+  "water": "77"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b6b"
+  },
+  "name": "Phòng 19",
+  "month": "1",
+  "year": "2024",
+  "electricity": "141",
+  "water": "114"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b6c"
+  },
+  "name": "Phòng 20",
+  "month": "1",
+  "year": "2024",
+  "electricity": "1870",
+  "water": "301"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b6d"
+  },
+  "name": "Phòng 1 (Trái)",
+  "month": "1",
+  "year": "2024",
+  "electricity": "4103",
+  "water": "331"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b6e"
+  },
+  "name": "Phòng 2 (Trái)",
+  "month": "1",
+  "year": "2024",
+  "electricity": "5345",
+  "water": "494"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b6f"
+  },
+  "name": "Phòng 3 (Trái)",
+  "month": "1",
+  "year": "2024",
+  "electricity": "3988",
+  "water": "251"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b70"
+  },
+  "name": "Phòng 4 (Trái)",
+  "month": "1",
+  "year": "2024",
+  "electricity": "6062",
+  "water": "740"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b71"
+  },
+  "name": "Phòng 5 (Trái)",
+  "month": "1",
+  "year": "2024",
+  "electricity": "359",
+  "water": "405"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b72"
+  },
+  "name": "Phòng 6 (Trái)",
+  "month": "1",
+  "year": "2024",
+  "electricity": "3054",
+  "water": "288"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b5e"
+  },
+  "name": "Phòng 6",
+  "month": "1",
+  "year": "2024",
+  "electricity": "12011",
+  "water": "839"
+},
+{
+  "_id": {
+    "$oid": "65e3f0a47d81b60b6eae2b5f"
+  },
+  "name": "Phòng 7",
+  "month": "1",
+  "year": "2024",
+  "electricity": "7409",
+  "water": "318"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a81"
+  },
+  "name": "Phòng 1",
+  "month": "11",
+  "year": "2023",
+  "electricity": "3965",
+  "water": "350"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a82"
+  },
+  "name": "Phòng 2",
+  "month": "11",
+  "year": "2023",
+  "electricity": "8591",
+  "water": "315"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a83"
+  },
+  "name": "Phòng 3",
+  "month": "11",
+  "year": "2023",
+  "electricity": "1345",
+  "water": "488"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a86"
+  },
+  "name": "Phòng 6",
+  "month": "11",
+  "year": "2023",
+  "electricity": "11833",
+  "water": "829"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a87"
+  },
+  "name": "Phòng 7",
+  "month": "11",
+  "year": "2023",
+  "electricity": "7311",
+  "water": "30"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a88"
+  },
+  "name": "Phòng 8",
+  "month": "11",
+  "year": "2023",
+  "electricity": "33559",
+  "water": "2986"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a89"
+  },
+  "name": "Phòng 9",
+  "month": "11",
+  "year": "2023",
+  "electricity": "3773",
+  "water": "547"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a8a"
+  },
+  "name": "Phòng 10",
+  "month": "11",
+  "year": "2023",
+  "electricity": "3410",
+  "water": "184"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a8b"
+  },
+  "name": "Phòng 11",
+  "month": "11",
+  "year": "2023",
+  "electricity": "4637",
+  "water": "395"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a8c"
+  },
+  "name": "Phòng 12",
+  "month": "11",
+  "year": "2023",
+  "electricity": "6029",
+  "water": "413"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a8d"
+  },
+  "name": "Phòng 13",
+  "month": "11",
+  "year": "2023",
+  "electricity": "9146",
+  "water": "466"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a8e"
+  },
+  "name": "Phòng 14",
+  "month": "11",
+  "year": "2023",
+  "electricity": "2557",
+  "water": "446"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a8f"
+  },
+  "name": "Phòng 15",
+  "month": "11",
+  "year": "2023",
+  "electricity": "2479",
+  "water": "250"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a90"
+  },
+  "name": "Phòng 16",
+  "month": "11",
+  "year": "2023",
+  "electricity": "5040",
+  "water": "563"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a91"
+  },
+  "name": "Phòng 17",
+  "month": "11",
+  "year": "2023",
+  "electricity": "4799",
+  "water": "383"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a92"
+  },
+  "name": "Phòng 18",
+  "month": "11",
+  "year": "2023",
+  "electricity": "4551",
+  "water": "68"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a93"
+  },
+  "name": "Phòng 19",
+  "month": "11",
+  "year": "2023",
+  "electricity": "119",
+  "water": "179"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a94"
+  },
+  "name": "Phòng 20",
+  "month": "11",
+  "year": "2023",
+  "electricity": "1469",
+  "water": "255"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a95"
+  },
+  "name": "Phòng 1 (Trái)",
+  "month": "11",
+  "year": "2023",
+  "electricity": "3790",
+  "water": "318"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a96"
+  },
+  "name": "Phòng 2 (Trái)",
+  "month": "11",
+  "year": "2023",
+  "electricity": "5197",
+  "water": "475"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a97"
+  },
+  "name": "Phòng 3 (Trái)",
+  "month": "11",
+  "year": "2023",
+  "electricity": "3772",
+  "water": "241"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a98"
+  },
+  "name": "Phòng 4 (Trái)",
+  "month": "11",
+  "year": "2023",
+  "electricity": "5797",
+  "water": "705"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a99"
+  },
+  "name": "Phòng 5 (Trái)",
+  "month": "11",
+  "year": "2023",
+  "electricity": "309",
+  "water": "392"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a9a"
+  },
+  "name": "Phòng 6 (Trái)",
+  "month": "11",
+  "year": "2023",
+  "electricity": "2848",
+  "water": "278"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a84"
+  },
+  "name": "Phòng 4",
+  "month": "11",
+  "year": "2023",
+  "electricity": "5557",
+  "water": "213"
+},
+{
+  "_id": {
+    "$oid": "65e3f40e6eaa94b4aa9b7a85"
+  },
+  "name": "Phòng 5",
+  "month": "11",
+  "year": "2023",
+  "electricity": "2806",
+  "water": "458"
+}]

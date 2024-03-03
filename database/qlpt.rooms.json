@@ -1,0 +1,208 @@
+[{
+  "_id": {
+    "$oid": "65deabf9fa91ffc7885fa9d7"
+  },
+  "name": "Phòng 1",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65deae0597302d3944e6d4d6"
+  },
+  "name": "Phòng 2",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65deae7eb6998df480b6a1a9"
+  },
+  "name": "Phòng 3",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65def119ffdccfd45f45c543"
+  },
+  "name": "Phòng 4",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e370cb8318d68cdd4fa285"
+  },
+  "name": "Phòng 5",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e370d18318d68cdd4fa288"
+  },
+  "name": "Phòng 6",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e370d68318d68cdd4fa28b"
+  },
+  "name": "Phòng 7",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e370db8318d68cdd4fa28e"
+  },
+  "name": "Phòng 8",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e370e58318d68cdd4fa291"
+  },
+  "name": "Phòng 9",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d30fff9a0a996afb5235"
+  },
+  "name": "Phòng 10",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d491fe5b6d43397de0b7"
+  },
+  "name": "Phòng 11",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d495fe5b6d43397de0ba"
+  },
+  "name": "Phòng 12",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d49bfe5b6d43397de0bd"
+  },
+  "name": "Phòng 13",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4a1fe5b6d43397de0c0"
+  },
+  "name": "Phòng 14",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4a5fe5b6d43397de0c3"
+  },
+  "name": "Phòng 15",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4a9fe5b6d43397de0c6"
+  },
+  "name": "Phòng 16",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4acfe5b6d43397de0c9"
+  },
+  "name": "Phòng 17",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4b1fe5b6d43397de0cc"
+  },
+  "name": "Phòng 18",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4b6fe5b6d43397de0cf"
+  },
+  "name": "Phòng 19",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4b9fe5b6d43397de0d2"
+  },
+  "name": "Phòng 20",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4c1fe5b6d43397de0d5"
+  },
+  "name": "Phòng 1 (Trái)",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4cafe5b6d43397de0d8"
+  },
+  "name": "Phòng 2 (Trái)",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4d4fe5b6d43397de0db"
+  },
+  "name": "Phòng 3 (Trái)",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4dafe5b6d43397de0de"
+  },
+  "name": "Phòng 4 (Trái)",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4e0fe5b6d43397de0e1"
+  },
+  "name": "Phòng 5 (Trái)",
+  "owner": "",
+  "status": "checked"
+},
+{
+  "_id": {
+    "$oid": "65e3d4ecfe5b6d43397de0e4"
+  },
+  "name": "Phòng 6 (Trái)",
+  "owner": "",
+  "status": "checked"
+}]

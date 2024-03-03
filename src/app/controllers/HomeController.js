@@ -1,6 +1,13 @@
+const User = require('../models/User');
+
 class HomeController {
     index(req, res){
-        res.render('manageHome');
+        const id = req.user._id;
+        User.findById({_id: id})
+        .then(User => {
+            User = User.toObject();
+            res.render('manageHome', {User});
+        })
     }
 }
 

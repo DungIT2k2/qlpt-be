@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "65e36ac7ca18aa9a6ed778cd"
+  },
+  "username": "user",
+  "password": "$2a$10$fIJ/6PQPXIkV9qzZVvokAelY2C088A14f2N45Hm.g17t6d8j3ApCK",
+  "name": "Nguyễn Văn A",
+  "role": "User",
+  "room": "Phòng 1"
+},
+{
+  "_id": {
+    "$oid": "65e36ad2ca18aa9a6ed778d2"
+  },
+  "username": "user2",
+  "password": "$2a$10$mOLc7qhFNNmNgkjru1D9DeVFieDQgQm1AG5te8SzrxNCVvkjvChsy",
+  "name": "Nguyễn Văn B",
+  "role": "User",
+  "room": "Phòng 2"
+},
+{
+  "_id": {
+    "$oid": "65e36ae5ca18aa9a6ed778d9"
+  },
+  "username": "admin",
+  "password": "$2a$10$q7JvJeYoVRU3hC352qcjM.zXK1HBB1ElOK51BP8i3DCv1TZIPfTH2",
+  "name": "Nguyễn Văn Tiến Dũng",
+  "role": "Manage",
+  "room": ""
+}]

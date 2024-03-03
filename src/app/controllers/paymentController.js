@@ -22,56 +22,59 @@ class paymentController {
         Payment.find({ month: month, year: year })
             .then(Payment => {
                 Payment = Payment.map(Payment => Payment.toObject());
-                if (Payment.length > 0) {
-                    Payment.forEach(item => {
-                        item.totalPay = parseFloat(item.totalPay).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
-                        item.wTotal = parseFloat(item.wTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
-                        item.eTotal = parseFloat(item.eTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
-                      });
-                    res.render('payments/payment', { Payment });
-                }
-                else {
-                    res.redirect('payment/create?month=' + month + '&year=' + year);
-                }
+                Payment.forEach(item => {
+                    item.totalPay = parseFloat(item.totalPay).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
+                    item.wTotal = parseFloat(item.wTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
+                    item.eTotal = parseFloat(item.eTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
+                    if (item.status == "true"){
+                        item.status = "checked";
+                    }
+                    else{
+                        item.status = "";
+                    }
+                });
+                res.render('payments/payment', { Payment });
             })
             .catch(next)
 
     }
     create(req, res, next) {
-        var monthNew = req.query.month;
-        var yearNew = req.query.year;
-        var monthOld;
-        var yearOld;
-        if (monthNew == 1) {
-            monthOld = 12;
-            yearOld = yearNew - 1;
+        var monthNewTemp = req.query.month;
+        var yearNewTemp = req.query.year;
+        var monthOldTemp;
+        var yearOldTemp;
+        if (monthNewTemp == 1) {
+            monthOldTemp = 12;
+            yearOldTemp = yearNewTemp - 1;
         }
         else {
-            monthOld = monthNew - 1;
-            yearOld = yearNew;
+            monthOldTemp = monthNewTemp - 1;
+            yearOldTemp = yearNewTemp;
         }
 
         let ultilitiesNew;
-        const ultilitiesNewPromise = Ultility.find({ month: monthNew, year: yearNew })
+        const ultilitiesNewPromise = Ultility.find({ month: monthNewTemp, year: yearNewTemp })
+            .sort({ _id: 1 })
             .then(Ultility => {
                 ultilitiesNew = Ultility.map(Ultility => Ultility.toObject());
                 if (ultilitiesNew.length == 0) {
-                    res.redirect('/payment?month=' + monthOld + '&year=' + yearOld);
+                    res.redirect('/manage');
                 }
             });
 
         let ultilitiesOld;
-        const ultilitiesOldPromise = Ultility.find({ month: monthOld, year: yearOld })
+        const ultilitiesOldPromise = Ultility.find({ month: monthOldTemp, year: yearOldTemp })
+            .sort({ _id: 1 })
             .then(Ultility => {
                 ultilitiesOld = Ultility.map(Ultility => Ultility.toObject());
                 if (ultilitiesOld.length == 0) {
-                    res.redirect('/payment?month=' + monthOld + '&year=' + yearOld);
+                    res.redirect('/manage');
                 }
             });
         Promise.all([ultilitiesNewPromise, ultilitiesOldPromise])
             .then(() => {
-                if(ultilitiesNew.length != ultilitiesOld.length){
-                    res.redirect('/payment?month=' + monthOld + '&year=' + yearOld);
+                if (ultilitiesNew.length != ultilitiesOld.length) {
+                    res.redirect('/payment?month=' + monthOldTemp + '&year=' + yearOldTemp);
                 }
                 const nameNew = ultilitiesNew.map(ultilitiesNew => ultilitiesNew.name);
                 const monthNew = ultilitiesNew.map(ultilitiesNew => ultilitiesNew.month);
@@ -87,7 +90,7 @@ class paymentController {
                 var Ultilities = [];
                 var eTotal, wTotal, totalPay;
                 for (let i = 0; i < nameNew.length; i++) {
-                    if (nameNew[0] == nameOld[0]) {
+                    if (nameNew[i] == nameOld[i]) {
                         eTotal = (electricityNew[i] - electricityOld[i]) * 4000;
                         wTotal = (waterNew[i] - waterOld[i]) * 6000;
                         totalPay = eTotal + wTotal + 20000;
@@ -116,9 +119,15 @@ class paymentController {
                         .then()
                         .catch(next)
                 })
-                res.redirect('/payment?month=' + monthNew + '&year=' + yearNew);
+                res.redirect('/payment?month=' + monthNewTemp + '&year=' + yearNewTemp);
             })
             .catch(next);
+    }
+    pay(req, res, next){
+        const id = req.query.id;
+        Payment.updateOne({_id: id}, {status: "true"})
+            .then(() => res.redirect('/payment'))
+            .catch(next)
     }
 
     print(req, res, next) {
@@ -131,7 +140,7 @@ class paymentController {
                     item.totalPay = parseFloat(item.totalPay).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
                     item.wTotal = parseFloat(item.wTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
                     item.eTotal = parseFloat(item.eTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
-                  });
+                });
                 res.render('payments/print', { Payment });
             })
 
