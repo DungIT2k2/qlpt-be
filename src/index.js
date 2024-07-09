@@ -39,9 +39,8 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
 //Routes init
-//abcde
 route(app);
 
 app.listen(port, () => {
-  console.log(`App listening on port abcde ${port}`)
+  console.log(`App listening on port ${port}`)
 })
