@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Payment = require('../models/Payment');
+const { formattedMoney } = require('../ultils/commonFunction');
 
 class userController {
     index(req, res, next) {
@@ -48,6 +49,9 @@ class userController {
                             else {
                                 status = "Chưa thanh toán"
                             }
+                            Payment.eTotal = formattedMoney(Payment.eTotal);
+                            Payment.wTotal = formattedMoney(Payment.wTotal);
+                            Payment.totalPay = formattedMoney(Payment.totalPay);
                             res.render('payments/checkpayment', { Payment, status })
                         }
                     })
