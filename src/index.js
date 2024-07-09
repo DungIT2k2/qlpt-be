@@ -39,7 +39,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
 //Routes init
-//abcdefg
+//abcde
 route(app);
 
 app.listen(port, () => {
