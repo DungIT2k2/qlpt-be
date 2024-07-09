@@ -8,7 +8,6 @@ const route = require('./routes');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 
-
 //connect db
 const db = require('./config/db');
 db.connect();
