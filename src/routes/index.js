@@ -5,16 +5,15 @@ const ultilityRouter = require('./ultility');
 const paymentRouter = require('./payment');
 const usermanageRouter = require('./usermanage');
 const userRouter = require('./user');
-const checkAdmin = require('../app/middlewares/checkAdmin');
-const checkUser = require('../app/middlewares/checkUser');
+const { verifyToken, authAdmin } = require("../app/middlewares/auth");
 
 function router(app){
-    app.use('/room', checkAdmin, roomRouter);
-    app.use('/ultility',checkAdmin, ultilityRouter);
-    app.use('/payment',checkAdmin, paymentRouter);
-    app.use('/usermanage',checkAdmin, usermanageRouter);
-    app.use('/manage',checkAdmin, homeRouter);
-    app.use('/user',checkUser, userRouter);
+    app.use('/room', verifyToken, authAdmin, roomRouter);
+    app.use('/ultility', verifyToken, authAdmin, ultilityRouter);
+    app.use('/payment',verifyToken, authAdmin, paymentRouter);
+    app.use('/usermanage', verifyToken, authAdmin, usermanageRouter);
+    app.use('/manage', verifyToken, authAdmin, homeRouter);
+    app.use('/user', verifyToken, userRouter);
     app.use('/', loginRouter);
 }
 

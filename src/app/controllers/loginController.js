@@ -19,11 +19,16 @@ class loginController {
                     res.render('login', { noti });
                 }
                 else {
-                    const token = jwt.sign({ _id: User._id }, 'jwt-test', { expiresIn: 60 * 60 * 24 });
+                    const payload = {
+                        _id: User._id,
+                        name: User.name,
+                        role: User.role,
+                        room: User.room
+                    }
+                    const secretKey = process.env.SECRET_KEY || 'jwt-test';
+                    const token = jwt.sign(payload, secretKey, { expiresIn: 60 * 60 * 24 });
                     res.cookie('Auth-Token', token);
-                    res.cookie('role', User.role);
                     if (User.role == 'Manage') {
-                        res.cookie('role', User.role);
                         res.redirect('/manage')
                     }
                     if (User.role == 'User') {

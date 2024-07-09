@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const route = express.Router();
-const userController = require('../app/controllers/userController');
-const verifyToken = require('../app/middlewares/veryfyToken');
+const userController = require("../app/controllers/userController");
+const { verifyToken } = require("../app/middlewares/auth");
 
-route.get('/checkpayment', verifyToken, userController.check)
-route.get('/',verifyToken ,userController.index);
+route.get("/checkpayment", userController.check);
+route.get("/", userController.index);
 
-module.exports = route
+module.exports = route;
