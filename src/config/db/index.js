@@ -1,24 +1,18 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 async function connect() {
   try {
-    await mongoose.connect('mongodb+srv://admin:admin@qlpt.rlhbm52.mongodb.net/qlpt', {});
-    console.log('Connect Success!');
+    const srv = process.env.MONGODB_CONNECTION || 'mongodb://127.0.0.1:27017';
+    const database = process.env.MONGODB_DATABASE || 'qlpt';
+    await mongoose.connect(`${srv}/${database}`, {})
+    .then((result)=>{
+      console.log(`Connect Success DB: ${result.connections[0]._connectionString}`);
+    });
   } catch (error) {
-    console.log('Connect Fail!');
+    console.log('Connect Fail DB!');
     console.error(error);
   }
 }
-
-//local mongodb
-// async function connect() {
-//   try {
-//     await mongoose.connect('mongodb://127.0.0.1:27017/qlpt', {});
-//     console.log('Connect Success!');
-//   } catch (error) {
-//     console.log('Connect Fail!');
-//     console.error(error);
-//   }
-// }
 
 module.exports = { connect };
