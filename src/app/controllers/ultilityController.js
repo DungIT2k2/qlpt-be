@@ -1,13 +1,21 @@
 const Ultility = require('../models/Ultility');
 const Room = require('../models/Room');
+var moment = require('moment-timezone');
 
 class ultilityController {
     show(req, res, next) {
+        var time = {};
         var monthNew;
         var yearNew;
+        //need fix
         if (req.query.month && req.query.year !== "") {
-            monthNew = (req.query.month);
-            yearNew = (req.query.year);
+            var currentDate = moment().tz("Asia/Ho_Chi_Minh");
+            monthNew = currentDate.month() + 1;
+            yearNew = +currentDate.format('YYYY');
+            time = {
+                month: monthNew,
+                year: yearNew,
+            }
         }
         else {
             monthNew = req.cookies['monthLast'];
@@ -79,15 +87,20 @@ class ultilityController {
                     }
                 }
                 // console.log(Ultilities)
-                res.render('ultilities/ultility', { Ultilities, monthNew: monthNew, yearNew: yearNew });
+                res.render('ultilities/ultility', { Ultilities, monthNew: monthNew, yearNew: yearNew, time });
             })
             .catch(next);
     }
     add(req, res, next) {
         Room.find({})
             .then(Room => {
+                var currentDate = moment().tz("Asia/Ho_Chi_Minh");
+                const time = {
+                    month: currentDate.month() + 1,
+                    year: +currentDate.format('YYYY'),
+                }
                 Room = Room.map(Room => Room.toObject());
-                res.render('ultilities/add', { Room });
+                res.render('ultilities/add', { Room, time });
             })
     }
     save(req, res, next) {

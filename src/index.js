@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 
 //connect db
 const db = require('./config/db');
+const { isEqual } = require('./helper');
 db.connect();
 
 app.use(methodOverride('_method'))
@@ -30,7 +31,7 @@ app.use(express.urlencoded({
 app.engine('hbs', handlebars({
   extname: '.hbs',
   helpers:{
-
+    isEqual: isEqual
   }
 }));
 

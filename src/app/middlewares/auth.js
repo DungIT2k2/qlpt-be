@@ -21,7 +21,8 @@ function authAdmin(req, res, next){
           next()
         }
         else{
-            return res.status(403).send('Not Permission');
+          res.redirect('/user');
+          return res.status(403).send('Not Permission');
         }
     }
     else{

@@ -10,26 +10,26 @@
             <div class="me-2">
                 <label for="month" class="form-label">Tháng</label>
                 <select class="form-select" id="cbMonth" name="month">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                    <option value="1" {{#if (isEqual time.month 1)}}selected{{/if}}>1</option>
+                    <option value="2" {{#if (isEqual time.month 2)}}selected{{/if}}>2</option>
+                    <option value="3" {{#if (isEqual time.month 3)}}selected{{/if}}>3</option>
+                    <option value="4" {{#if (isEqual time.month 4)}}selected{{/if}}>4</option>
+                    <option value="5" {{#if (isEqual time.month 5)}}selected{{/if}}>5</option>
+                    <option value="6" {{#if (isEqual time.month 6)}}selected{{/if}}>6</option>
+                    <option value="7" {{#if (isEqual time.month 7)}}selected{{/if}}>7</option>
+                    <option value="8" {{#if (isEqual time.month 8)}}selected{{/if}}>8</option>
+                    <option value="9" {{#if (isEqual time.month 9)}}selected{{/if}}>9</option>
+                    <option value="10" {{#if (isEqual time.month 10)}}selected{{/if}}>10</option>
+                    <option value="11" {{#if (isEqual time.month 11)}}selected{{/if}}>11</option>
+                    <option value="12" {{#if (isEqual time.month 12)}}selected{{/if}}>12</option>
                 </select>
             </div>
             <div class="ms-2">
                 <label for="year" class="form-label">Năm</label>
                 <select class="form-select" id="cbYear" name="year">
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
+                    <option value="2023" {{#if (isEqual time.year 2023)}}selected{{/if}}>2023</option>
+                    <option value="2024" {{#if (isEqual time.year 2024)}}selected{{/if}}>2024</option>
+                    <option value="2025" {{#if (isEqual time.year 2025)}}selected{{/if}}>2025</option>
                 </select>
             </div>
         </div>
