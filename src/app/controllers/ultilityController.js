@@ -1,23 +1,32 @@
-const Ultility = require("../models/Ultility");
-const Room = require("../models/Room");
+const Ultility = require('../models/Ultility');
+const Room = require('../models/Room');
+var moment = require('moment-timezone');
 
 class ultilityController {
-  show(req, res, next) {
-    var monthNew;
-    var yearNew;
-    if (req.query.month && req.query.year !== "") {
-      monthNew = req.query.month;
-      yearNew = req.query.year;
-    } else {
-      monthNew = req.cookies["monthLast"];
-      yearNew = req.cookies["yearLast"];
-    }
-    if (monthNew == undefined || yearNew == undefined) {
-      monthNew = 1;
-      yearNew = 2023;
-    }
-    res.cookie("monthLast", monthNew);
-    res.cookie("yearLast", yearNew);
+    show(req, res, next) {
+        var time = {};
+        var monthNew;
+        var yearNew;
+        //need fix
+        if (req.query.month && req.query.year !== "") {
+            var currentDate = moment().tz("Asia/Ho_Chi_Minh");
+            monthNew = currentDate.month() + 1;
+            yearNew = +currentDate.format('YYYY');
+            time = {
+                month: monthNew,
+                year: yearNew,
+            }
+        }
+        else {
+            monthNew = req.cookies['monthLast'];
+            yearNew = req.cookies['yearLast'];
+        }
+        if (monthNew == undefined || yearNew == undefined) {
+            monthNew = 1;
+            yearNew = 2023;
+        }
+        res.cookie('monthLast', monthNew);
+        res.cookie('yearLast', yearNew);
 
     var monthOld;
     var yearOld;
@@ -106,11 +115,15 @@ class ultilityController {
   }
   add(req, res, next) {
     Room.find({})
-      .sort({ _id: 1 })
-      .then((Room) => {
-        Room = Room.map((Room) => Room.toObject());
-        res.render("ultilities/add", { Room });
-      });
+    .then(Room => {
+        var currentDate = moment().tz("Asia/Ho_Chi_Minh");
+        const time = {
+            month: currentDate.month() + 1,
+            year: +currentDate.format('YYYY'),
+        }
+        Room = Room.map(Room => Room.toObject());
+        res.render('ultilities/add', { Room, time });
+    })
   }
   save(req, res, next) {
     Room.find({})
