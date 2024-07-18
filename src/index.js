@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 5000
+var cors = require('cors')
 const route = require('./routes');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
@@ -11,6 +12,8 @@ var cookieParser = require('cookie-parser');
 //connect db
 const db = require('./config/db');
 db.connect();
+
+app.use(cors())
 
 app.use(methodOverride('_method'))
 

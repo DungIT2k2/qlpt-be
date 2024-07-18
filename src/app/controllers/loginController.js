@@ -31,8 +31,7 @@ class loginController {
           const token = jwt.sign(payload, secretKey, {
             expiresIn: 60 * 60 * 24,
           });
-          res.cookie("Auth-Token", token);
-          res.status(200).send({
+          res.status(200).json({
             message: "Đăng Nhập Thành Công",
             accessToken: token,
           });
