@@ -4,10 +4,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 class loginController {
-  index(req, res, next) {
-    res.render("login");
-  }
-  login(req, res, next) {
+  login(req, res) {
     const user = new User(req.body);
     User.findOne({ username: user.username })
       .then(async (User) => {
@@ -31,6 +28,7 @@ class loginController {
           const token = jwt.sign(payload, secretKey, {
             expiresIn: 60 * 60 * 24,
           });
+          res.cookie('myToken', token);
           res.status(200).json({
             message: "Đăng Nhập Thành Công",
             accessToken: token,
@@ -47,7 +45,6 @@ class loginController {
     cookies.forEach((cookie) => {
       res.cookie(cookie, "", { expires: new Date(0) });
     });
-    res.redirect("/");
   }
 }
 
