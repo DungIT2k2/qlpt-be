@@ -1,9 +1,9 @@
 **Các chức năng cho người dùng cuối (end-user)**
-+ Đăng nhập / đăng xuất (có authen) (sử dụng author bằng token)
++ Đăng nhập / đăng xuất (có authen jwt)
 + Hiển thị các hóa đơn theo từng tháng và kiểm tra tình trạng hóa đơn
 
 **Các chức năng cho người quản trị web (web-admin)**
-+ Đăng nhập / đăng xuất (có authen) (sử dụng author bằng token)
++ Đăng nhập / đăng xuất (có authen jwt)
 + Check quyền phù hợp khi chuyển trang (middleware)
 + Quản lí phòng (CRUD)
 + Quản lí tiện ích (CRU có tính toán)
