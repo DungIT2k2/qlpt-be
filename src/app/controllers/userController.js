@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/Account');
 const Payment = require('../models/Payment');
 const { formattedMoney } = require('../ultils/commonFunction');
 
