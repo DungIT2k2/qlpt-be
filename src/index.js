@@ -1,12 +1,10 @@
 const path = require('path');
 const express = require('express')
 const morgan = require('morgan')
-const handlebars = require('express-handlebars');
 const app = express();
 const port = 5000
 var cors = require('cors')
 const route = require('./routes');
-var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 
 //connect db
@@ -14,8 +12,6 @@ const db = require('./config/db');
 db.connect();
 
 app.use(cors())
-
-app.use(methodOverride('_method'))
 
 app.use(cookieParser());
 
@@ -28,17 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-
-//Template engine
-app.engine('hbs', handlebars({
-  extname: '.hbs',
-  helpers:{
-
-  }
-}));
-
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources', 'views'));
 
 //Routes init
 route(app);

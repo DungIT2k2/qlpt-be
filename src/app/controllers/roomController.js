@@ -29,11 +29,21 @@ class roomController {
         }
     }
     async create(req, res) {
-        const room = new Room(req.body);
-        if (!room) return res.status(500).send({
+        const body = req.body
+        if (!body.name || !body.status) return res.status(500).send({
             message: "Tạo mới phòng không thành công"
         })
-        room.status = "uncheck";
+
+        const check = await Room.find({ name: body.name }).lean();
+        if (check && check.length > 0) return res.status(500).send({
+            message: "Tên phòng đã tồn tại"
+        })
+
+        const room = new Room(body);
+        if (!room?.status) {
+            room.status = "uncheck";
+        }
+
         try {
             const result = await room.save();
             return res.send({
@@ -48,7 +58,7 @@ class roomController {
         }
     }
     async update(req, res) {
-        try {   
+        try {
             const id = req.body.id;
             const dataUpdate = req?.body?.dataUpdate;
             if (!dataUpdate) return res.send({
