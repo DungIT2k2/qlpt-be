@@ -8,28 +8,32 @@
     ],
     "routes": [
         {
-            "handle": "src/routes/room.js",
-            "src": "/room"
+            "src": "/room",
+            "dest": "src/routes/room.js"
         },
         {
-            "handle": "src/routes/utility.js",
-            "src": "/utility"
+            "src": "/utility",
+            "dest": "src/routes/utility.js"
         },
         {
-            "handle": "src/routes/payment.js",
-            "src": "/payment"
+            "src": "/payment",
+            "dest": "src/routes/payment.js"
         },
         {
-            "handle": "src/routes/account.js",
-            "src": "/account"
+            "src": "/account",
+            "dest": "src/routes/account.js"
         },
         {
-            "handle": "src/routes/user.js",
-            "src": "/user"
+            "src": "/manage",
+            "dest": "src/routes/manage.js"
         },
         {
-            "handle": "src/routes/login.js",
-            "src": "/"
+            "src": "/user",
+            "dest": "src/routes/user.js"
+        },
+        {
+            "src": "/",
+            "dest": "src/routes/login.js"
         }
     ]
 }
