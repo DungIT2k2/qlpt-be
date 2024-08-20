@@ -1,15 +1,12 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "src/index.js",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-            "src": "(.*)",
-            "dest": "src/index.js"
-        }
-    ]
-}
+    "functions": {
+      "src/routes/login.js": {
+        "memory": 3009,
+        "maxDuration": 30
+      },
+      "src/routes/*.js": {
+        "memory": 3009,
+        "maxDuration": 30
+      }
+    }
+  }
