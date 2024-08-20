@@ -1,5 +1,5 @@
 const Payment = require('../models/Payment');
-const Ultility = require('../models/Ultility');
+const Ultility = require('../models/Utility');
 
 class paymentController {
     show(req, res, next) {

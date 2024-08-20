@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 
 function verifyToken(req, res, next) {
-  const token = req.cookies["Auth-Token"];
+  // const token = req.cookies["myToken"];
+  const token = req.headers["authorization"].split(" ")[1];
   const secretKey = process.env.SECRET_KEY || "jwt-test";
 
   if (!token) return res.status(401).send("Unauthorized");
@@ -11,7 +12,7 @@ function verifyToken(req, res, next) {
     req.user = payload;
     next();
   } catch (err) {
-    return res.status(400).send("Invalid Token");
+    return res.status(400).send({ message: "Invalid Token"});
   }
 }
 

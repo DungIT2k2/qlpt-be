@@ -1,46 +1,103 @@
 const Room = require('../models/Room');
 
 class roomController {
-    show(req, res, next) {
-        Room.find({})
-            .then(Room => {
-                Room = Room.map(Room => Room.toObject())
-                res.render('rooms/room', { Room });
+    async getAll(req, res) {
+        try {
+            const dataRes = await Room.find().sort({ _id: 1 }).exec();
+            return res.send({
+                status: 200,
+                data: dataRes,
             })
-            .catch(next)
-    }
-    create(req, res, next) {
-        res.render('rooms/create');
-    }
-    created(req, res, next){
-        const room = new Room(req.body);
-        room.status = "uncheck";
-        room.save()
-            .then(() => res.redirect('/room'))
-            .catch(next)
-    }
-    edit(req, res, next){
-        Room.findById(req.params.id)
-            .then(Room => {
-                Room = Room.toObject();
-                res.render('rooms/edit', { Room })
+        } catch (error) {
+            return res.status(500).send({
+                message: error.message
             })
-            .catch(next)
-    }
-    update(req, res, next){
-        if (req.body.status == "true"){
-            req.body.status = "checked";
-        }else{
-            req.body.status = "uncheck";
         }
-        Room.updateOne({_id: req.params.id}, req.body)
-            .then(() => res.redirect('/room'))
-            .catch(next)
     }
-    delete(req, res, next){
-        Room.deleteOne({_id: req.params.id})
-        .then(() => res.redirect('/room'))
-        .catch(next)
+    async get(req, res) {
+        try {
+            const id = req?.body?.id;
+            const dataRes = await Room.findById(id)
+            return res.send({
+                status: 200,
+                data: dataRes,
+            })
+        } catch (error) {
+            return res.status(500).send({
+                message: error.message
+            })
+        }
+    }
+    async create(req, res) {
+        const body = req.body
+        if (!body.name || !body.status) return res.status(500).send({
+            message: "Tạo mới phòng không thành công"
+        })
+
+        const check = await Room.find({ name: body.name }).lean();
+        if (check && check.length > 0) return res.status(500).send({
+            message: "Tên phòng đã tồn tại"
+        })
+
+        const room = new Room(body);
+        if (!room?.status) {
+            room.status = "uncheck";
+        }
+
+        try {
+            const result = await room.save();
+            return res.send({
+                status: 200,
+                message: "Tạo mới phòng thành công",
+                result
+            });
+        } catch (error) {
+            return res.status(500).send({
+                message: error.message
+            });
+        }
+    }
+    async update(req, res) {
+        try {
+            const id = req.body.id;
+            const dataUpdate = req?.body?.dataUpdate;
+            if (!dataUpdate) return res.send({
+                status: 500,
+                message: "Không có thông tin cần cập nhật"
+            })
+            const result = await Room.updateOne({ _id: id }, dataUpdate)
+            if (result.matchedCount == 0) return res.send({
+                status: 500,
+                message: "Không tìm thấy phòng cần cập nhật"
+            })
+            return res.send({
+                status: 200,
+                message: "Cập nhật thông tin phòng thành công.",
+            })
+        } catch (error) {
+            return res.status(500).send({
+                message: error.message
+            });
+        }
+    }
+    async delete(req, res) {
+        try {
+            const id = req.body.id;
+            const result = await Room.deleteOne({ _id: id })
+            if (!result) return res.status(500).send({
+                message: "Xóa phòng không thành công"
+            })
+            if (result.deletedCount == 0) return res.status(500).send({
+                message: "Không tìm thấy phòng cần xóa"
+            })
+            return res.send({
+                message: "Xóa phòng thành công"
+            });
+        } catch (error) {
+            return res.status(500).send({
+                message: error.message
+            });
+        }
     }
 }
 
