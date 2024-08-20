@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 const User = require('../models/Account');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-=======
-const User = require("../models/Account");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
->>>>>>> 10f8787e31b6146a47c982208f913ebda1f796d4
 
 class loginController {
   login(req, res) {
