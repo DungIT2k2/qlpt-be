@@ -1,11 +1,11 @@
 {
     "functions": {
       "src/routes/login.js": {
-        "memory": 3009,
+        "memory": 1024,
         "maxDuration": 30
       },
       "src/routes/*.js": {
-        "memory": 3009,
+        "memory": 1024,
         "maxDuration": 30
       }
     }
