@@ -9,7 +9,7 @@
     "routes": [
         {
           "src": "/",
-          "dest": "src/routes/login.js"
+          "dest": "src/index.js"
         }
       ]
   }
