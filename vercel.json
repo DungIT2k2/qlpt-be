@@ -10,6 +10,10 @@
         {
           "src": "/",
           "dest": "src/index.js"
+        },
+        {
+            "src": "/room",
+            "dest": "src/routes/room.js"
         }
       ]
   }
