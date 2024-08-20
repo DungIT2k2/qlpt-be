@@ -12,8 +12,8 @@
           "dest": "src/index.js"
         },
         {
-            "src": "/room",
-            "dest": "src/routes/room.js"
+            "src": "/(.*)",
+            "dest": "src/routes/index.js"
         }
       ]
   }
