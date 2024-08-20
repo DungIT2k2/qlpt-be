@@ -1,12 +1,9 @@
 {
-    "functions": {
-      "src/routes/login.js": {
-        "memory": 1024,
-        "maxDuration": 30
-      },
-      "src/routes/*.js": {
-        "memory": 1024,
-        "maxDuration": 30
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/index.js",
+        "use": "@now/node"
       }
-    }
+    ]
   }
