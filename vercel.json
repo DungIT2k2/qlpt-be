@@ -1,19 +1,35 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "src/index.js",
-        "use": "@vercel/node"
-      }
+        {
+            "src": "src/index.js",
+            "use": "@vercel/node"
+        }
     ],
     "routes": [
         {
-          "src": "/",
-          "dest": "src/index.js"
+            "handle": "src/routes/room.js",
+            "src": "/room"
         },
         {
-            "src": "/(.*)",
-            "dest": "src/routes/index.js"
+            "handle": "src/routes/utility.js",
+            "src": "/utility"
+        },
+        {
+            "handle": "src/routes/payment.js",
+            "src": "/payment"
+        },
+        {
+            "handle": "src/routes/account.js",
+            "src": "/account"
+        },
+        {
+            "handle": "src/routes/user.js",
+            "src": "/user"
+        },
+        {
+            "handle": "src/routes/login.js",
+            "src": "/"
         }
-      ]
-  }
+    ]
+}
