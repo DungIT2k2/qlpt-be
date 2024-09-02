@@ -1,12 +1,13 @@
 const Utility = require('../models/Utility');
 const Room = require('../models/Room');
+const { StatusCodes } = require('http-status-codes');
 
 class utilityController {
     async getList(req, res) {
         var monthNew = +req?.body?.month;
         var yearNew = +req?.body?.year;
         if (!monthNew || !yearNew) {
-            return res.status(500).send({
+            return res.status(StatusCodes.BAD_REQUEST).send({
                 message: "Wrong body"
             })
         }
@@ -40,11 +41,11 @@ class utilityController {
                     waterTotal: utilitiesNew[i].water - utilitiesOld[i].water,
                 })
             }
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 data: dataRes
             });
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             })
         }
@@ -52,19 +53,19 @@ class utilityController {
 
     async create(req, res) {
         const data = req.body;
-        if (!data) return res.status(500).send({ message: "Wrong body" });
+        if (!data) return res.status(StatusCodes.BAD_REQUEST).send({ message: "Wrong body" });
         const result = await Utility.find({ name: data[0].name, month: data[0].month, year: data[0].year });
-        if (result && result.length > 0) return res.status(500).send({
+        if (result && result.length > 0) return res.status(StatusCodes.CONFLICT).send({
             message: "Điện nước tháng này đã có, vui lòng sửa nếu cần"
         });
         try {
             const dataRes = await Utility.insertMany(data);
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 message: "Thêm điện, nước thành công",
                 data: dataRes
             });
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             })
         }
@@ -72,7 +73,7 @@ class utilityController {
 
     async update(req, res) {    
         const data = req?.body;
-        if (!data) return res.status(500).send({ message: "Wrong body" });
+        if (!data) return res.status(StatusCodes.BAD_REQUEST).send({ message: "Wrong body" });
         try {
             const bulkUpdateOps = data.map(({ id, electricity, water }) => ({
                 updateOne: {
@@ -82,11 +83,11 @@ class utilityController {
             }));
 
             await Utility.bulkWrite(bulkUpdateOps);
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 message: "Cập nhật điện, nước thành công"
             });
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             })
         }

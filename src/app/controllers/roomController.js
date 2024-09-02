@@ -1,15 +1,16 @@
+const { StatusCodes } = require('http-status-codes');
 const Room = require('../models/Room');
 
 class roomController {
     async getAll(req, res) {
         try {
             const dataRes = await Room.find().sort({ _id: 1 }).exec();
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 status: 200,
                 data: dataRes,
             })
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             })
         }
@@ -18,24 +19,24 @@ class roomController {
         try {
             const id = req?.body?.id;
             const dataRes = await Room.findById(id)
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 status: 200,
                 data: dataRes,
             })
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             })
         }
     }
     async create(req, res) {
         const body = req.body
-        if (!body.name || !body.status) return res.status(500).send({
+        if (!body.name || !body.status) return res.status(StatusCodes.BAD_REQUEST).send({
             message: "Tạo mới phòng không thành công"
         })
 
         const check = await Room.find({ name: body.name }).lean();
-        if (check && check.length > 0) return res.status(500).send({
+        if (check && check.length > 0) return res.status(StatusCodes.CONFLICT).send({
             message: "Tên phòng đã tồn tại"
         })
 
@@ -46,13 +47,13 @@ class roomController {
 
         try {
             const result = await room.save();
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 status: 200,
                 message: "Tạo mới phòng thành công",
                 result
             });
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             });
         }
@@ -61,21 +62,21 @@ class roomController {
         try {
             const id = req.body.id;
             const dataUpdate = req?.body?.dataUpdate;
-            if (!dataUpdate) return res.send({
+            if (!dataUpdate) return res.status(StatusCodes.NOT_MODIFIED).send({
                 status: 500,
                 message: "Không có thông tin cần cập nhật"
             })
             const result = await Room.updateOne({ _id: id }, dataUpdate)
-            if (result.matchedCount == 0) return res.send({
+            if (result.matchedCount == 0) return res.status(StatusCodes.CONFLICT).send({
                 status: 500,
                 message: "Không tìm thấy phòng cần cập nhật"
             })
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 status: 200,
                 message: "Cập nhật thông tin phòng thành công.",
             })
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             });
         }
@@ -84,17 +85,17 @@ class roomController {
         try {
             const id = req.body.id;
             const result = await Room.deleteOne({ _id: id })
-            if (!result) return res.status(500).send({
+            if (!result) return res.status(StatusCodes.NOT_MODIFIED).send({
                 message: "Xóa phòng không thành công"
             })
-            if (result.deletedCount == 0) return res.status(500).send({
+            if (result.deletedCount == 0) return res.status(StatusCodes.CONFLICT).send({
                 message: "Không tìm thấy phòng cần xóa"
             })
-            return res.send({
+            return res.status(StatusCodes.OK).send({
                 message: "Xóa phòng thành công"
             });
         } catch (error) {
-            return res.status(500).send({
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message
             });
         }

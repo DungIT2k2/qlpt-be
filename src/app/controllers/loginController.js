@@ -1,5 +1,6 @@
 const User = require('../models/Account');
 const bcrypt = require('bcryptjs');
+const { StatusCodes } = require('http-status-codes');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -16,7 +17,7 @@ class loginController {
         );
         const message = "Sai mật khẩu";
         if (!checkPassCorrect) {
-          res.status(401).send({ message });
+          res.status(StatusCodes.NOT_ACCEPTABLE).send({ message });
         } else {
           const payload = {
             _id: User._id,
@@ -29,7 +30,7 @@ class loginController {
             expiresIn: 60 * 60 * 24,
           });
           res.cookie('myToken', token);
-          res.status(200).json({
+          res.status(StatusCodes.OK).json({
             message: "Đăng Nhập Thành Công",
             accessToken: token,
           });
@@ -37,7 +38,7 @@ class loginController {
       })
       .catch(() => {
         const message = "Sai tài khoản";
-        res.status(401).send({ message });
+        res.status(StatusCodes.NOT_ACCEPTABLE).send({ message });
       });
   }
   logout(req, res, next) {

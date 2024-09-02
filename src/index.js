@@ -6,6 +6,12 @@ const port = 5000
 var cors = require('cors')
 const route = require('./routes');
 var cookieParser = require('cookie-parser');
+const {
+  ReasonPhrases,
+  StatusCodes,
+  getReasonPhrase,
+  getStatusCode,
+} = require('http-status-codes');
 
 //connect db
 const db = require('./config/db');
@@ -26,7 +32,7 @@ app.use(express.urlencoded({
 }));
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.status(StatusCodes.OK).send("Hello World");
 });
 
 //Routes init
