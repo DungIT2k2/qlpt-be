@@ -1,5 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const Room = require('../models/Room');
+const { default: mongoose } = require('mongoose');
 
 class roomController {
     async getAll(req, res) {
@@ -18,10 +19,17 @@ class roomController {
     async get(req, res) {
         try {
             const id = req?.body?.id;
-            const dataRes = await Room.findById(id)
-            return res.status(StatusCodes.OK).send({
-                status: 200,
-                data: dataRes,
+            if (id && mongoose.Types.ObjectId.isValid(id)) {
+                const dataRes = await Room.findById(id);
+                console.log(dataRes);
+                return res.status(StatusCodes.OK).send({
+                    status: 200,
+                    data: dataRes,
+                })
+            }
+            return res.status(StatusCodes.NOT_FOUND).send({
+                status: StatusCodes.NOT_FOUND,
+                message: "Không tìm thấy id phòng",
             })
         } catch (error) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({

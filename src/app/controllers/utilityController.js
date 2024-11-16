@@ -1,6 +1,7 @@
 const Utility = require('../models/Utility');
 const Room = require('../models/Room');
 const { StatusCodes } = require('http-status-codes');
+const paymentController = require('./paymentController');
 
 class utilityController {
     async getList(req, res) {
@@ -52,18 +53,38 @@ class utilityController {
     }
 
     async create(req, res) {
-        const data = req.body;
-        if (!data) return res.status(StatusCodes.BAD_REQUEST).send({ message: "Wrong body" });
-        const result = await Utility.find({ name: data[0].name, month: data[0].month, year: data[0].year });
+        const data = req.body?.data;
+        const month = req.body?.month;
+        const year = req.body?.year;
+        
+        if (!data || !month || !year) return res.status(StatusCodes.BAD_REQUEST).send({ message: "Wrong body" }); 
+        const result = await Utility.find({ month: month, year: year }).lean();
         if (result && result.length > 0) return res.status(StatusCodes.CONFLICT).send({
             message: "Điện nước tháng này đã có, vui lòng sửa nếu cần"
         });
         try {
-            const dataRes = await Utility.insertMany(data);
+            const dataCreate = data.map(item => {
+                return {
+                    ...item,
+                    month: month,
+                    year: year
+                }
+            })
+            await Utility.insertMany(dataCreate);
+            const calPayment = await paymentController.calNewPayment(month, year);
+            if (calPayment){
+                return res.status(StatusCodes.OK).send({
+                    message: "Thêm điện, nước thành công",
+                    sub_message: `Đã tính toán điện, nước cho tháng ${month} năm ${year}`,
+                    data: dataCreate
+                });
+            }
             return res.status(StatusCodes.OK).send({
                 message: "Thêm điện, nước thành công",
-                data: dataRes
+                sub_message: `Chưa Tính toán điện, nước cho tháng ${month} năm ${year}`,
+                data: dataCreate
             });
+            
         } catch (error) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
                 message: error.message

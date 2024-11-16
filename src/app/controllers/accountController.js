@@ -50,12 +50,18 @@ class accountController {
     async delete(req, res) {
         try {
             const result = await Account.deleteOne({ _id: req.body.id })
-            if (!result) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
-                message: "Xóa tài khoản không thành công"
-            })
-            if (result.deletedCount == 0) return res.status(StatusCodes.NOT_MODIFIED).send({
-                message: "Không tìm thấy tài khoản cần xóa"
-            })
+            if (!result) {
+                return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+                    message: "Xóa tài khoản không thành công"
+                })
+            }
+
+            if (result.deletedCount == 0) {
+                return res.status(StatusCodes.NOT_FOUND).send({
+                    status: StatusCodes.NOT_FOUND,
+                    message: "Không tìm thấy tài khoản cần xóa"
+                })
+            }
             return res.status(StatusCodes.OK).send({
                 message: "Xóa tài khoản thành công"
             });
