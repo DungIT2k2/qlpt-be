@@ -21,7 +21,7 @@ class roomController {
             const id = req?.body?.id;
             if (id && mongoose.Types.ObjectId.isValid(id)) {
                 const dataRes = await Room.findById(id);
-                console.log(dataRes);
+                // console.log(dataRes);
                 return res.status(StatusCodes.OK).send({
                     status: 200,
                     data: dataRes,

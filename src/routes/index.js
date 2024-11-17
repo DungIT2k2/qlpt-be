@@ -1,5 +1,4 @@
 const roomRouter = require('./room');
-const homeRouter = require('./home');
 const loginRouter = require('./login');
 const utilityRouter = require('./utility');
 const paymentRouter = require('./payment');
@@ -12,7 +11,6 @@ function router(app){
     app.use('/utility', verifyToken, authAdmin, utilityRouter);
     app.use('/payment',verifyToken, authAdmin, paymentRouter);
     app.use('/account', verifyToken, authAdmin, accountRouter);
-    app.use('/manage', verifyToken, authAdmin, homeRouter);
     app.use('/user', verifyToken, userRouter);
     app.use('/', loginRouter);
 }

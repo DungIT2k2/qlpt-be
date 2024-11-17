@@ -14,13 +14,13 @@ class utilityController {
         }
         var monthOld;
         var yearOld;
-        if (+monthNew == 1) {
+        if (monthNew == 1) {
             monthOld = 12;
-            yearOld = +yearNew - 1;
+            yearOld = yearNew - 1;
         }
         else {
-            monthOld = +monthNew - 1;
-            yearOld = +yearNew;
+            monthOld = monthNew - 1;
+            yearOld = yearNew;
         }
         try {
             const utilitiesNew = await Utility.find({ month: monthNew, year: yearNew }).sort({ _id: 1 }).lean();

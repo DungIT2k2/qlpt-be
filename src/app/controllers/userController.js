@@ -1,62 +1,77 @@
+const { default: mongoose } = require('mongoose');
 const User = require('../models/Account');
 const Payment = require('../models/Payment');
 const { formattedMoney } = require('../ultils/commonFunction');
+const { StatusCodes } = require('http-status-codes');
 
 class userController {
-    index(req, res, next) {
-        const id = req.user._id
-        User.findById({ _id: id })
-            .then(User => {
-                User = User.toObject();
-                res.render('userHome', { User });
+    async get(req, res) {
+        try {
+            const id = req.user?._id;
+            if (!id) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+                status: StatusCodes.INTERNAL_SERVER_ERROR,
+                message: "Wrong body!"
             })
-            .catch(next)
+            if (id && mongoose.Types.ObjectId.isValid(id)) {
+                const dataRes = await User.findById({ _id: id })
+                return res.status(StatusCodes.OK).send({
+                    status: StatusCodes.OK,
+                    data: {
+                        username: dataRes?.admin,
+                        name: dataRes?.name,
+                        role: dataRes?.role,
+                        room: dataRes.room ? dataRes?.room : ""
+                    }
+                });
+            }
+            return res.status(StatusCodes.NOT_FOUND).send({
+                status: StatusCodes.NOT_FOUND,
+                data: {}
+            })
+        } catch (error) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+                message: error.message
+            })
+        }
     }
-    check(req, res, next) {
-        const id = req.user._id
-        var month;
-        var year;
-        if (req.query.month && req.query.year) {
-            month = req.query.month;
-            year = req.query.year;
-        }
-        else {
-            month = req.cookies['monthLast'];
-            year = req.cookies['yearLast'];
-        }
-        if (month == undefined || year == undefined) {
-            month = 1;
-            year = 2023;
-        }
-        res.cookie('monthLast', month);
-        res.cookie('yearLast', year);
-        User.findById({ _id: id })
-            .then(User => {
-                User = User.toObject();
-                const room = User.room;
-                Payment.findOne({ name: room, month: month, year: year })
-                    .then(Payment => {
-                        var status;
-                        if (!Payment) {
-                            status = "Không tồn tại"
-                            res.render('payments/checkpayment', { status })
-                        }
-                        else {
-                            Payment = Payment.toObject();
-                            if (Payment.status == true) {
-                                status = "Đã thanh toán"
+    async checkPayment(req, res, next) {
+        try {
+            const id = req.user?._id;
+            var month = req.body?.month;
+            var year = req.body?.year;
+            if (id) {
+                const dataUser = await User.findById({ _id: id }).lean();
+                const room = dataUser?.room;
+                if (room) {
+                    const dataPayment = await Payment.findOne({ name: room, month: month, year: year }).lean();
+                    if (dataPayment) {
+                        delete dataPayment._id;
+                        return res.status(StatusCodes.OK).send({
+                            status: StatusCodes.OK,
+                            data: {
+                                ...dataPayment,
+                                eTotal: parseFloat(dataPayment.eTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 }),
+                                wTotal: parseFloat(dataPayment.wTotal).toLocaleString('vi-VN', { minimumFractionDigits: 0 }),
+                                totalPay: parseFloat(dataPayment.totalPay).toLocaleString('vi-VN', { minimumFractionDigits: 0 }) 
                             }
-                            else {
-                                status = "Chưa thanh toán"
-                            }
-                            Payment.eTotal = formattedMoney(Payment.eTotal);
-                            Payment.wTotal = formattedMoney(Payment.wTotal);
-                            Payment.totalPay = formattedMoney(Payment.totalPay);
-                            res.render('payments/checkpayment', { Payment, status })
-                        }
-                    })
+                        });
+                    } else {
+                        return res.status(StatusCodes.NOT_FOUND).send({
+                            status: StatusCodes.NOT_FOUND,
+                            message: `Thông tin thanh toán tháng ${month} năm ${year} chưa có`
+                        });
+                    }
+                }
+            }
+            return res.status(StatusCodes.NOT_FOUND).send({
+                status: StatusCodes.NOT_FOUND,
+                message: "Không tìm thấy thông tin thanh toán"
+            });
+        } catch (error) {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+                message: error.message
             })
-            .catch(next)
+        }
     }
 }
 

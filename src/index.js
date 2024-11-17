@@ -7,10 +7,7 @@ var cors = require('cors')
 const route = require('./routes');
 var cookieParser = require('cookie-parser');
 const {
-  ReasonPhrases,
   StatusCodes,
-  getReasonPhrase,
-  getStatusCode,
 } = require('http-status-codes');
 
 //connect db
